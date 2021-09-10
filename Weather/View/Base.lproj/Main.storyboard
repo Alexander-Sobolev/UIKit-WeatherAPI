@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UyV-nX-owE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LNC-v6-7dg">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ListTVC-->
+        <!--Погода Sobolev-->
         <scene sceneID="GSL-zl-UYv">
             <objects>
                 <tableViewController id="UyV-nX-owE" customClass="ListTVC" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuse" id="eNK-Tj-J39">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Reuse" id="eNK-Tj-J39" customClass="ListCell" customModule="Weather" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.333333969116211" width="428" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eNK-Tj-J39" id="6p6-ch-0um">
@@ -81,6 +81,12 @@
                                         <constraint firstAttribute="bottom" secondItem="2O5-Te-D4A" secondAttribute="bottom" constant="3" id="thP-UG-j0U"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="conditionCityLabel" destination="Vp8-8u-FZI" id="RKi-uw-WLD"/>
+                                    <outlet property="nameCityLabel" destination="2oD-yx-pjZ" id="Zat-BU-qc7"/>
+                                    <outlet property="tempCityLabel" destination="Umi-xa-5iS" id="PAw-GV-r93"/>
+                                    <segue destination="8nO-WE-pc8" kind="show" identifier="showDetail" id="blg-kE-xOj"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -88,21 +94,28 @@
                             <outlet property="delegate" destination="UyV-nX-owE" id="Oxo-zL-SXt"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Погода Sobolev" id="aSV-8d-Swn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iZ7-q4-3mJ">
+                            <connections>
+                                <action selector="plusButton:" destination="UyV-nX-owE" id="6CE-kk-W3o"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cv-TD-XXO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-457.00934579439252" y="147.08423326133911"/>
+            <point key="canvasLocation" x="373" y="147"/>
         </scene>
-        <!--View Controller-->
+        <!--DetailVC-->
         <scene sceneID="18z-RT-9El">
             <objects>
-                <viewController id="8nO-WE-pc8" sceneMemberID="viewController">
+                <viewController id="8nO-WE-pc8" customClass="DetailVC" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xtg-2e-bWA">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Qho-ax-ogE">
-                                <rect key="frame" x="127" y="106" width="174" height="252"/>
+                                <rect key="frame" x="127" y="150" width="174" height="252"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nx2-M7-qgZ">
                                         <rect key="frame" x="10" y="0.0" width="154" height="30"/>
@@ -161,7 +174,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="V7y-S3-PAz">
-                                <rect key="frame" x="42.333333333333343" y="416" width="343.33333333333326" height="105.33333333333337"/>
+                                <rect key="frame" x="42.333333333333343" y="459.99999999999994" width="343.33333333333326" height="105.33333333333331"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ceW-Yk-MTm">
                                         <rect key="frame" x="0.0" y="0.0" width="191" height="105.33333333333333"/>
@@ -179,7 +192,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Min температура днем:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LpH-eG-z0j">
-                                                <rect key="frame" x="0.0" y="56.666666666666693" width="187" height="20.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="56.666666666666636" width="187" height="20.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -236,7 +249,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Gi-sN-lE1">
-                                                <rect key="frame" x="0.0" y="56.666666666666693" width="65.666666666666671" height="20.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="56.666666666666636" width="65.666666666666671" height="20.333333333333336"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3T9-Yo-CjF">
                                                         <rect key="frame" x="0.0" y="0.0" width="38.333333333333336" height="20.333333333333332"/>
@@ -287,10 +300,39 @@
                             <constraint firstItem="Qho-ax-ogE" firstAttribute="centerX" secondItem="V7y-S3-PAz" secondAttribute="centerX" id="vps-tq-PtZ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="CNK-tS-NN3"/>
+                    <connections>
+                        <outlet property="conditionLabel" destination="goW-QI-jxQ" id="oyo-Yb-gEM"/>
+                        <outlet property="maxTempLabel" destination="ZMa-Zz-JG3" id="fxR-Zl-Edt"/>
+                        <outlet property="minTempLabel" destination="3T9-Yo-CjF" id="OAh-79-RpA"/>
+                        <outlet property="nameCityLabel" destination="nx2-M7-qgZ" id="1Lm-Ll-eTN"/>
+                        <outlet property="pressureLabel" destination="JpK-tv-7l4" id="tCe-tm-CpD"/>
+                        <outlet property="tempCity" destination="io0-Im-KDf" id="RC2-II-mng"/>
+                        <outlet property="viewCity" destination="Gip-jB-O5R" id="SQH-va-7dl"/>
+                        <outlet property="windSpeedLabel" destination="R3H-Aw-jeQ" id="LUP-b2-S26"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ENR-TU-PvP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="273.91304347826087" y="148.36956521739131"/>
+            <point key="canvasLocation" x="1173.3644859813082" y="147.73218142548598"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xdE-lg-7l0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LNC-v6-7dg" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jFy-qk-8Dn">
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UyV-nX-owE" kind="relationship" relationship="rootViewController" id="RhY-re-nec"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cDp-xj-fs1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-457.00934579439252" y="147.08423326133911"/>
         </scene>
     </scenes>
     <resources>

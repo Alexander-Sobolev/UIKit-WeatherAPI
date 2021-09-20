@@ -16,7 +16,7 @@ struct NetworkWeatherManager {
         guard let url = URL(string: urlString) else { return }
         
         var request = URLRequest(url: url, timeoutInterval: Double.infinity)
-        request.addValue("Key", forHTTPHeaderField: "X-Yandex-API-Key")
+        request.addValue("5b69591d-b4bf-4252-92d8-ee9246a540a3", forHTTPHeaderField: "X-Yandex-API-Key")
         request.httpMethod = "GET"
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
